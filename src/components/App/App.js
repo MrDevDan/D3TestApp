@@ -60,6 +60,7 @@ function App() {
       isError: err });
   }
 
+  //Update data if needed
   React.useEffect(() => {
     var outData = dataFull.filter((x) => x.year >= from && x.year <= to);
 
@@ -71,9 +72,9 @@ function App() {
     }
   }, [to, from, dataFull]);
 
+  //Get data
   React.useEffect(() => {
     if(data.length === 0) {
-      //Get data
       d3.json("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/10/1880-2020/data.json").then((d) => {
         var convertedData = []; 
         var convertedOptions = []; 
