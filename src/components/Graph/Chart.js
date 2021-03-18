@@ -75,7 +75,7 @@ function Chart({ data }) {
       .attr("width", x.bandwidth())
       .attr("fill", "#344ce6")
       .attr("height", (d) => sizing.height - y(d.value));
-
+  // eslint-disable-next-line
   }, [data, sizing]);
 
   return (

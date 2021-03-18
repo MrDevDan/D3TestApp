@@ -70,6 +70,7 @@ function App() {
         data: outData,
       });
     }
+  // eslint-disable-next-line
   }, [to, from, dataFull]);
 
   //Get data
@@ -99,6 +100,7 @@ function App() {
         });
       });
     }
+  // eslint-disable-next-line
   }, []);
 
   return <>
