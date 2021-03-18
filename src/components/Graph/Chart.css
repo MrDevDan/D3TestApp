@@ -1,0 +1,27 @@
+.chart .cell {
+    padding-left: 51px;
+    padding-right: 51px;
+}
+
+.chart svg {
+    background: #fff;
+    overflow: visible;
+    display: block;
+    width: 100%;
+}
+
+.graph {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+@media screen and (max-width: 39.9375em) {
+    .chart .cell {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .graph {
+        padding-right: .5rem;
+    }
+}

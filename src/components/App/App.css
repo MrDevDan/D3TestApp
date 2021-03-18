@@ -1,0 +1,78 @@
+button {
+  width: 100px;
+  border: 1px solid #344ce6;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #344ce6;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.title {
+  color: #707d92;
+}
+
+body {
+  background: #fff !important;
+}
+
+.react-dropdown-select {
+  padding: .4rem !important;
+  font-size: 11px !important;
+  border-radius: 5px !important;
+}
+
+.buttonCell {
+  align-self: flex-end;
+}
+
+.buttonCell button {
+  padding: 12px;
+}
+
+.dropdown {
+  min-width: 85px;
+}
+
+.error {
+  color:red;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .title {
+    padding-top: 30px;
+  }
+
+  .dropdown {
+    box-sizing: border-box;
+    max-width: 85px;
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
+  .buttonCell button {
+    margin-top: 25px;
+
+  }
+
+  .error {
+    margin-top: 20px
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .dropdowns {
+    padding-top: 30px;
+  }
+
+  .dropdown {
+    box-sizing: border-box;
+    max-width: 85px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  .buttonCell button {
+    margin-bottom: 25px;
+  }
+}
