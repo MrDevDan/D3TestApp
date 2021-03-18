@@ -6,7 +6,7 @@ import Chart from "../Graph/Chart";
 import * as d3 from "d3";
 import Select from 'react-dropdown-select';
 
-// D3 chart app test by Dan C
+// D3 chart app test
 function App() {
   const fromYear = "2000"; // initial from year
   const toYear = "2020"; // initial to year
