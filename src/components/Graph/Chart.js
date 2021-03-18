@@ -76,7 +76,7 @@ function Chart({ data }) {
       .attr("fill", "#344ce6")
       .attr("height", (d) => sizing.height - y(d.value));
 
-  }, [data, sizing, values, years]);
+  }, [data, sizing]);
 
   return (
     <div className="container full chart graph">

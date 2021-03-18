@@ -19,6 +19,9 @@ function App() {
     from: fromYear,
     isError: false
   });
+  const compare = (z, zz) =>
+  z.length === zz.length &&
+  z.every((a, b) => a === zz[b]);
 
   const { data, load, dataFull, options, to, from, isError } = state;
 
@@ -39,17 +42,18 @@ function App() {
       from: inYear, 
       data: filteredData,
       isError: err });
-
   }
 
   //To Dropdown handler
   function DoDropdownTo(props) {
     var inYear = props[0].year;
+
     if(inYear === to) {
       return;
     }
     var filteredData = dataFull.filter((x) => x.year >= from && x.year <= inYear);
     var err = inYear < from ? true: false;
+
     updateState({
       to: inYear, 
       data: filteredData,
@@ -57,30 +61,44 @@ function App() {
   }
 
   React.useEffect(() => {
-    //Get data
-    d3.json("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/10/1880-2020/data.json").then((d) => {
-      var convertedData = []; 
-      var convertedOptions = []; 
+    var outData = dataFull.filter((x) => x.year >= from && x.year <= to);
 
-      //Convert json data
-      for(var key in d.data) {
-        var value = d.data[key];
-        var dataOut = {"year":key, value};
-        var optionOut = {"year":key}
-        convertedData.push(dataOut)
-        convertedOptions.push(optionOut)
-      }
-
+    if(compare(data,outData) === false) {
       // update state
       updateState({
-        data: convertedData.filter((x) => x.year >= from && x.year <= to),
-        load: false,
-        dataFull: convertedData,
-        options: convertedData
+        data: outData,
       });
-    });
-    return () => undefined;
-  }, [from, options, to]);
+    }
+  }, [to, from, dataFull]);
+
+  React.useEffect(() => {
+    if(data.length === 0) {
+      //Get data
+      d3.json("https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/1/10/1880-2020/data.json").then((d) => {
+        var convertedData = []; 
+        var convertedOptions = []; 
+        var outData;
+        //Convert json data
+        for(var key in d.data) {
+          var value = d.data[key];
+          var dataOut = {"year":key, value};
+          var optionOut = {"year":key}
+          convertedData.push(dataOut)
+          convertedOptions.push(optionOut)
+        }
+
+        outData = convertedData.filter((x) => x.year >= from && x.year <= to);
+
+        // update state
+        updateState({
+          data: outData,
+          load: false,
+          dataFull: convertedData,
+          options: convertedData
+        });
+      });
+    }
+  }, []);
 
   return <>
     <div className="grid-x chart dropdowns">
