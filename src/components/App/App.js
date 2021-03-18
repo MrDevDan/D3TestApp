@@ -137,7 +137,7 @@ function App() {
           </button>
         </div>
     </div>
-    {isError && <div className="grid-x chart"><div class="error cell small-12">Error: To date is before the from date. Please fix.</div></div>}
+    {isError && <div className="grid-x chart"><div className="error cell small-12">Error: To date is before the from date. Please fix.</div></div>}
     {!load && <Chart data={data} />}
     <Columns />
   </>;
